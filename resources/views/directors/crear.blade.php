@@ -52,7 +52,7 @@
                         @error('dni')
                             <small>*{{ $message }}</small>
                         @enderror
-                        <input type="number" placeholder="Dni" name="dni" id="dni" value="{{ old('dni') }}">
+                        <input type="number" placeholder="Clave" name="dni" id="dni" value="{{ old('dni') }}">
                     </div>
                     <div class="col-xs-12 col-md-6">
                         @error('nombre')

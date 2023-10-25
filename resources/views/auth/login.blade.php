@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="text-center" style="margin-top: 10px">
-                    <a class="font-italic isai5" href="{{ url('/password/reset') }}">Olvidé mi contraseña</a>
+                    {{-- <a class="font-italic isai5" href="{{ url('/password/reset') }}">Olvidé mi contraseña</a> --}}
                     {{-- <a class="font-italic isai5"
                         href="{{ url('/register') }}">Registrarse</a> --}}
                 </div>

@@ -44,14 +44,14 @@
         @endif
 
         <div class="modal-body" id="modal-create">
-            <h3 class="text-center" style="margin-bottom: 55px">REGISTRO DE NUEVO SECCION</h3>
+            <h3 class="text-center" style="margin-bottom: 55px">REGISTRO DE NUEVA SECCION</h3>
             <form action="{{ route('seccions.store') }}" method="POST">
                 @csrf
                 <div class="form-row col-12">
                     @error('seccion')
                         <small>*{{ $message }}</small>
                     @enderror
-                    <input type="text" placeholder="Example: A-B-C" name="seccion" id="seccion"
+                    <input type="text" placeholder="Example: A-B" name="seccion" id="seccion"
                         value="{{ old('seccion') }}">
                 </div>
                 <div class="modal-footer">

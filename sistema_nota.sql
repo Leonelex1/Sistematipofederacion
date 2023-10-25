@@ -262,6 +262,7 @@ CREATE TABLE `nota` (
   `nota1` decimal(10,0) DEFAULT NULL,
   `nota2` decimal(10,0) DEFAULT NULL,
   `nota3` decimal(10,0) DEFAULT NULL,
+  `nota4` decimal(10,0) DEFAULT NULL,
   `promedio` tinyint(10) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL,
   `anio` varchar(255) DEFAULT NULL,
@@ -274,46 +275,7 @@ CREATE TABLE `nota` (
   CONSTRAINT `fk15` FOREIGN KEY (`estudiante`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of nota
--- ----------------------------
-INSERT INTO `nota` VALUES ('43', '94', '41', '1', '14', '18', '19', '17', null, '2020');
-INSERT INTO `nota` VALUES ('44', '84', '37', '1', '20', '20', '20', '20', null, '2020');
-INSERT INTO `nota` VALUES ('45', '85', '37', '1', '17', '13', '11', '14', null, '2020');
-INSERT INTO `nota` VALUES ('46', '90', '37', '1', '15', '15', '15', '15', null, '2020');
-INSERT INTO `nota` VALUES ('47', '91', '37', '1', '16', '17', '0', '11', null, '2020');
-INSERT INTO `nota` VALUES ('51', '92', '41', '1', '11', '15', '10', '12', null, '2020');
-INSERT INTO `nota` VALUES ('52', '92', '44', '1', '20', '20', '8', '16', null, '2020');
-INSERT INTO `nota` VALUES ('53', '93', '41', '1', '14', '12', '16', '14', null, '2020');
-INSERT INTO `nota` VALUES ('55', '98', '41', '1', '10', '11', '13', '11', null, '2020');
-INSERT INTO `nota` VALUES ('56', '84', '51', '1', '20', '11', '14', '15', null, '2020');
-INSERT INTO `nota` VALUES ('57', '91', '51', '1', '11', '15', '14', '13', null, '2020');
-INSERT INTO `nota` VALUES ('58', '90', '38', '1', '14', '10', '15', '13', null, '2020');
-INSERT INTO `nota` VALUES ('59', '84', '53', '1', '20', '20', '12', '17', null, '2020');
-INSERT INTO `nota` VALUES ('60', '84', '43', '1', '10', '20', '20', '17', null, '2020');
-INSERT INTO `nota` VALUES ('61', '85', '43', '1', '16', '15', '14', '15', null, '2020');
-INSERT INTO `nota` VALUES ('62', '85', '53', '1', '20', '20', '20', '20', null, '2020');
-INSERT INTO `nota` VALUES ('63', '90', '53', '1', '3', '0', '0', '1', null, '2020');
-INSERT INTO `nota` VALUES ('69', '95', '37', '1', '18', '20', '15', '18', null, '2020');
-INSERT INTO `nota` VALUES ('72', '84', '37', '2', '20', '20', '20', '20', null, '2020');
-INSERT INTO `nota` VALUES ('73', '90', '37', '2', '9', '11', '12', '11', null, '2020');
-INSERT INTO `nota` VALUES ('75', '84', '37', '3', '14', '11', '18', '14', null, '2020');
-INSERT INTO `nota` VALUES ('76', '85', '37', '2', '20', '18', '17', '18', null, '2020');
-INSERT INTO `nota` VALUES ('77', '85', '37', '3', '17', '12', '20', '16', null, '2020');
-INSERT INTO `nota` VALUES ('78', '97', '37', '3', '0', '14', '13', '9', null, '2020');
-INSERT INTO `nota` VALUES ('79', '84', '51', '3', '15', '14', '10', '13', null, '2020');
-INSERT INTO `nota` VALUES ('80', '85', '51', '1', '10', '10', '10', '10', null, '2020');
-INSERT INTO `nota` VALUES ('82', '96', '37', '1', '19', '19', '15', '18', null, '2020');
-INSERT INTO `nota` VALUES ('86', '92', '44', '15', '14', '14', '13', '14', null, '2021');
-INSERT INTO `nota` VALUES ('87', '93', '44', '15', '16', '20', '15', '17', null, '2021');
-INSERT INTO `nota` VALUES ('88', '93', '44', '17', '14', '15', '20', '16', null, '2021');
-INSERT INTO `nota` VALUES ('89', '93', '44', '16', '8', '7', '10', '8', null, '2021');
-INSERT INTO `nota` VALUES ('90', '105', '45', '15', '13', '13', '8', '11', null, '2021');
-INSERT INTO `nota` VALUES ('91', '105', '45', '1', '0', '0', '0', '0', null, '2020');
 
--- ----------------------------
--- Table structure for seccion
--- ----------------------------
 DROP TABLE IF EXISTS `seccion`;
 CREATE TABLE `seccion` (
   `id_seccion` int(11) NOT NULL AUTO_INCREMENT,
@@ -327,10 +289,7 @@ CREATE TABLE `seccion` (
 INSERT INTO `seccion` VALUES ('1', 'A');
 INSERT INTO `seccion` VALUES ('2', 'B');
 INSERT INTO `seccion` VALUES ('3', 'C');
-INSERT INTO `seccion` VALUES ('4', 'D');
-INSERT INTO `seccion` VALUES ('5', 'E');
-INSERT INTO `seccion` VALUES ('6', 'F');
-INSERT INTO `seccion` VALUES ('7', 'G');
+
 
 -- ----------------------------
 -- Table structure for semestre

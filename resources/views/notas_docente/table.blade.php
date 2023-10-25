@@ -1,22 +1,22 @@
 @extends('layouts/app')
-@section('titulo', 'Lista Semestres')
+@section('titulo', 'Lista de unidades')
 @section('content')
 @if (Auth::user()->tipo == 2)
 
 <div style="padding: 20px 0">
-    <div class="panel panel-info bg-primary">
+    <div class="panel panel-insfo bg-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">
             @foreach ($gradoSeccion as $item)
             <h3 class="text-center">{{ $item->grado . '' . $item->nom_seccion . '---' . $item->nombre . ' ' }}
             </h3>
             @endforeach
-            <h4>SELECCIONAR UN SEMESTRE...</h4>
+            <h4>SELECCIONAR UNA UNIDAD...</h4>
         </div>
         <div style="text-align: center" class="panel-body">
             @foreach ($semestre as $sem)
             <a style="margin: 3px;" class="btn btn-primary"
-                href="{{ route('notasDocente.verNotasPorSemestre', [$curso, $grado, $sem->id_semestre,$anio]) }}">SEMESTRE
+                href="{{ route('notasDocente.verNotasPorSemestre', [$curso, $grado, $sem->id_semestre,$anio]) }}">UNIDAD
                 {{ $sem->semestre . ' ' . $sem->año }}</a>
             @endforeach
             <a class="btn btn-success"
@@ -46,6 +46,9 @@
                     NOTA 3
                 </th>
                 <th>
+                    NOTA 4
+                </th>
+                <th>
                     PRO
                 </th>
                 <th>
@@ -73,6 +76,9 @@
                             step="0" value=""></td>
                     <td><input type="number" onchange="actualizar('{{ $i->id_nota }}','{{ $c }}');"
                             value="{{ $i->nota3 }}" name="n3" id="n3{{ $c }}" style="width: 65px" min="0" max="20"
+                            step="0" value=""></td>
+                    <td><input type="number" onchange="actualizar('{{ $i->id_nota }}','{{ $c }}');"
+                            value="{{ $i->nota4 }}" name="n4" id="n3{{ $c }}" style="width: 65px" min="0" max="20"
                             step="0" value=""></td>
                     <td style="font-size: 16px;color: #000;font-weight: bold"><span
                             id="prom{{ $c }}">{{ $i->promedio }}</span></td>
@@ -109,6 +115,10 @@
                     </td>
                     <td><input type="number" onchange="actualizar2('{{ $ite->id }}','{{ $curso }}','{{ $c2 }}');"
                             value="" name="nn3" id="nn3{{ $c2 }}" style="width: 65px" min="0" max="20" step="0"
+                            value="">
+                    </td>
+                    <td><input type="number" onchange="actualizar2('{{ $ite->id }}','{{ $curso }}','{{ $c2 }}');"
+                            value="" name="nn4" id="nn4{{ $c2 }}" style="width: 65px" min="0" max="20" step="0"
                             value="">
                     </td>
                     <td style="font-size: 16px;color: #000;font-weight: bold"><span id="prom2{{ $c2 }}"></span>
@@ -149,6 +159,7 @@
                 var nota1 = document.getElementById("n1" + c).value;
                 var nota2 = document.getElementById("n2" + c).value;
                 var nota3 = document.getElementById("n3" + c).value;
+                var nota4 = document.getElementById("n4" + c).value;
                 var semestre = document.getElementById("semestre").value;
                 var anio = document.getElementById("anio").value;
 
@@ -161,7 +172,10 @@
                 if (nota3 == "") {
                     nota3 = 0;
                 }
-                var ruta = "{{ url('notas-docente-actualizar/') }}/" + id + "/" + nota1 + "/" + nota2 + "/" + nota3 + "/" +
+                if (nota4 == "") {
+                    nota4 = 0;
+                }
+                var ruta = "{{ url('notas-docente-actualizar/') }}/" + id + "/" + nota1 + "/" + nota2 + "/" + nota3 + "/" + nota4 + "/" +
                     semestre + "/" + anio + "";
                 $.ajax({
                     url: ruta,
@@ -172,24 +186,18 @@
                     error: function(data) {
                         $("#prom").html(data.error);
 
-                        // if ($.isEmptyObject(errors) == false) {
-                        //     $.each(errors.errors, function(key, value) {
-                        //         var errorId = '#' + key + 'Error';
-                        //         $(errorId).removeClass("d-none");
-                        //         $(errorId).text(value);
-                        //     })
-                        // }
                     }
                 })
             }
 
 </script>
 <script>
-    function actualizar2(id, curso, c2) {
+    function actualizar2(id, curso, c2){
 
                 var nota1 = document.getElementById("nn1" + c2).value;
                 var nota2 = document.getElementById("nn2" + c2).value;
                 var nota3 = document.getElementById("nn3" + c2).value;
+                var nota4 = document.getElementById("nn4" + c2).value;
                 var semestre = document.getElementById("semestre").value;
                 var anio = document.getElementById("anio").value;
 
@@ -202,7 +210,10 @@
                 if (nota3 == "") {
                     nota3 = 0;
                 }
-                var ruta = "{{ url('notas-docente-actualizar2/') }}/" + id + "/" + nota1 + "/" + nota2 + "/" + nota3 + "/" +
+                if (nota4 == "") {
+                    nota4 = 0;
+                }
+                var ruta = "{{ url('notas-docente-actualizar2/') }}/" + id + "/" + nota1 + "/" + nota2 + "/" + nota3 + "/" + nota4 + "/" +
                     curso + "/" + semestre + "/" + anio + "";
                 $.ajax({
                     url: ruta,
@@ -213,13 +224,7 @@
                     error: function(data) {
                         $("#prom2").html(data.error);
 
-                        // if ($.isEmptyObject(errors) == false) {
-                        //     $.each(errors.errors, function(key, value) {
-                        //         var errorId = '#' + key + 'Error';
-                        //         $(errorId).removeClass("d-none");
-                        //         $(errorId).text(value);
-                        //     })
-                        // }
+                        
                     }
                 })
             }

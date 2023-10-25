@@ -10,7 +10,7 @@ class NotaEstudianteController extends Controller
 {
     public function index($anio)
     {
-        //CONSULTA DE SEMESTRES
+        //CONSULTA DE UNIDADES
         $semestre = DB::select('select * from semestre where año=?', [$anio]);
 
         return view('notas_estudiante/cursos')
@@ -23,7 +23,7 @@ class NotaEstudianteController extends Controller
     public function ingresarAnio()
     {
         $anio = DB::select('select año from semestre group by año');
-        //CONSULTA DE SEMESTRES
+        //CONSULTA DE UNIDADES
         $semestre = DB::select('select * from semestre');
 
         return view('notas_estudiante/ingresa_anio')
@@ -42,6 +42,7 @@ class NotaEstudianteController extends Controller
         nota.nota1,
         nota.nota2,
         nota.nota3,
+        nota.nota4,
         nota.promedio,
         curso.nombre,
         curso.id_grado
@@ -85,7 +86,7 @@ class NotaEstudianteController extends Controller
         nota.id_nota,
         sum(promedio) as 'suma',
         -- CAST(sum(promedio)/3 as INT) as 'pro_total',
-        ROUND(sum(promedio)/3) as 'pro_total',
+        ROUND(sum(promedio)/4) as 'pro_total',
         curso.nombre
         FROM
         usuario

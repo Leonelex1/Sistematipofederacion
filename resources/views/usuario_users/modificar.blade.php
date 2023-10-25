@@ -55,7 +55,7 @@
                         @error('dni')
                             <small>*{{ $message }}</small>
                         @enderror
-                        <input type="number" id="dni" placeholder="Dni" name="dni" value="{{ $i->dni }}">
+                        <input type="number" id="dni" placeholder="Clave" name="dni" value="{{ $i->dni }}">
                         @error('nombre')
                             <small>*{{ $message }}</small>
                         @enderror

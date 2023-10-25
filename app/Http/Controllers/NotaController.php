@@ -43,7 +43,7 @@ class NotaController extends Controller
             $curso = $key->nombre;
         }
 
-        //CONSULTA DE SEMESTRES
+        //CONSULTA DE UNIDADES
         $semestre = DB::select('select * from semestre where año=?', [$anio]);
         return view('notas/table')
             ->with('sql', [])
@@ -59,7 +59,7 @@ class NotaController extends Controller
 
     public function verNotasSemestre($id, $grado, $semestre, $anio)
     {
-        //semestre  1
+        //UNIDAD  1
         $sql = DB::select("SELECT
         usuario.id,
         usuario.dni,
@@ -73,6 +73,7 @@ class NotaController extends Controller
         nota.nota1,
         nota.nota2,	
         nota.nota3,
+        nota.nota4,
         nota.promedio
         FROM
         usuario
@@ -119,7 +120,7 @@ class NotaController extends Controller
         usuario
         where tipo=3 and grado=? and id not in (' . implode(',', array_map('intval', $array)) . ')', [$grado]);
 
-        //CONSULTA DE SEMESTRES
+        //CONSULTA DE UNIDADES
         $semestre = DB::select('select * from semestre where año=?', [$anio]);
         return view('notas/table', compact('sql'))
             ->with('sql2', $sql2)
@@ -153,8 +154,8 @@ class NotaController extends Controller
         nota.curso,
         nota.anio,
         sum(promedio) as 'suma',        
-        -- CAST(sum(promedio)/3 AS INT) as 'pro_total'
-        ROUND(sum(promedio)/3) as 'pro_total'
+        -- CAST(sum(promedio)/4 AS INT) as 'pro_total'
+        ROUND(sum(promedio)/4) as 'pro_total'
         FROM
         usuario
         LEFT JOIN nota ON nota.estudiante = usuario.id

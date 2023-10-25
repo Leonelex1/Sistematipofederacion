@@ -56,7 +56,7 @@
                 @error('ruc')
                 <small>*{{ $message }}</small>
                 @enderror
-                <input type="text" placeholder="ruc" name="ruc" value="{{ $item->ruc }}">
+                <input type="text" placeholder="Clave" name="ruc" value="{{ $item->ruc }}">
             </div>
 
             <div class="col-xs-12 col-md-6">

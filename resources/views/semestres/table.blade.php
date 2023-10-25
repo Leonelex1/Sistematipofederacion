@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('titulo', 'Lista Semestres')
+@section('titulo', 'Lista de unidades')
 @section('content')
     @if (Auth::user()->tipo == 1)
         <script>
@@ -43,10 +43,10 @@
         @endif
 
         <div class="col-lg-12">
-            <h3 class="text-center">LISTA DE SEMESTRES</h3>
+            <h3 class="text-center">LISTA DE UNIDADES</h3>
             <div class="text-right" style="margin-bottom: 5px;">
                 <a href="{{ route('semestres.create') }}" class="btn btn-primary"><i
-                        class="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;Agregar Semestre</a>
+                        class="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;Agregar unidad</a>
             </div>
             <table class="table table-bordered table-responsive table-hover" id="example" width="100%">
                 <thead class="bg-primary">
@@ -55,7 +55,7 @@
                             ID
                         </th>
                         <th>
-                            Semestre
+                            Unidad
                         </th>
                         <th>
                             Año

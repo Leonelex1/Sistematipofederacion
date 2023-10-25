@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('titulo', 'Modificar Semestre')
+@section('titulo', 'Modificar unidad')
 @section('content')
     @if (Auth::user()->tipo == 2)
         @if (session('correcto'))
@@ -56,7 +56,7 @@
                         @error('semestre')
                             <small>*{{ $message }}</small>
                         @enderror
-                        <input type="text" id="semestre" placeholder="Semestre" name="semestre" value="{{ $i->semestre }}">
+                        <input type="text" id="semestre" placeholder="Unidad" name="semestre" value="{{ $i->semestre }}">
                     </div>
                     <div class="form-row col-12">
                         @error('año')

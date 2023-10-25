@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('titulo', 'Registro Semestre')
+@section('titulo', 'Registro de unidades')
 @section('content')
     @if (Auth::user()->tipo == 1)
         @if (session('correcto'))
@@ -44,14 +44,14 @@
         @endif
 
         <div class="modal-body" id="modal-create">
-            <h3 class="text-center" style="margin-bottom: 55px">REGISTRO DE NUEVO SEMESTRE</h3>
+            <h3 class="text-center" style="margin-bottom: 55px">REGISTRO DE NUEVA UNIDAD</h3>
             <form action="{{ route('semestres.store') }}" method="POST">
                 @csrf
                 <div class="form-row col-12">
                     @error('semestre')
                         <small>*{{ $message }}</small>
                     @enderror
-                    {{-- <input type="text" placeholder="Example: I-II-III" name="semestre" id="semestre"
+                    {{-- <input type="text" placeholder="Example: I-II-III-IV" name="semestre" id="semestre"
                         value="{{ old('semestre') }}"> --}}
                         <select name="semestre" id="semestre">
                             <option value="I">I</option>

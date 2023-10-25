@@ -133,9 +133,8 @@
         <footer class="main-footer" style="max-height: 100px;text-align: center">
             {{-- <strong>Copyright © 2021 <a href="#">Company</a>.</strong> All rights
                 reserved.<br> --}}
-            <span>Desarrollado con ♥ por </span><a target="_blank"
-                href="https://isaiismael.github.io/portafolio/"><strong>Isai
-                    Ismael Sandoval Ccaccro</strong></a>
+            <span>Desarrollado  por </span><a target="_blank"
+                href="https://classroom.google.com/"><strong>Leonel Villatoro</strong></a>
         </footer>
 
     </div>

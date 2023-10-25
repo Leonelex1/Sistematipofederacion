@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('titulo', 'Lista Semestres')
+@section('titulo', 'Lista de unidades')
 @section('content')
 @if (Auth::user()->tipo == 1)
 @if (session('mensaje'))
@@ -47,12 +47,12 @@
         @foreach ($gradoSeccion as $item)
         <h3 class="text-center">{{ $item->grado . '' . $item->nom_seccion . '---' . $item->nombre . ' ' }}</h3>
         @endforeach
-        <h4 class="text-danger">DEBES SELECCIONAR UN SEMESTRE...</h4>
+        <h4 class="text-danger">DEBES SELECCIONAR UNA UNIDAD...</h4>
     </div>
     <div style="text-align: center" class="panel-body">
         @foreach ($semestre as $sem)
         <a style="margin: 3px;" class="btn btn-primary"
-            href="{{ route('notas.verNotasSemestre', [$id, $grado, $sem->id_semestre,$anio]) }}">SEMESTRE
+            href="{{ route('notas.verNotasSemestre', [$id, $grado, $sem->id_semestre,$anio]) }}">UNIDAD
             {{ $sem->semestre . ' ' . $anio }}</a>
         @endforeach
         <a class="btn btn-success" href="{{ route('notas.verNotasFinales', [$id, $grado,$anio]) }}">PROMEDIO FINAL</a>
@@ -84,6 +84,9 @@
                         NOTA 3
                     </th>
                     <th>
+                        NOTA 4
+                    </th>
+                    <th>
                         PRO
                     </th>
 
@@ -100,6 +103,7 @@
                     </td>
                     <td>{{ $i->nota2 }}</td>
                     <td>{{ $i->nota3 }}</td>
+                    <td>{{ $i->nota4 }}</td>
                     <td style="font-size: 16px;color: #000;font-weight: bold"><span>{{ $i->promedio }}</span>
                     </td>
 
@@ -111,6 +115,7 @@
                     <td>{{ $ite->id }}</td>
                     <td>{{ $ite->name . ' ' . $ite->apellido }}</td>
                     <td>{{ $curso }}</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

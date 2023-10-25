@@ -70,7 +70,7 @@
                             ID
                         </th>
                         <th>
-                            Dni
+                            Clave
                         </th>
                         <th>
                             Nombre

@@ -6,13 +6,13 @@
     <div class="panel panel-info bg-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <h4>SELECCIONAR UN SEMESTRE...</h4>
+            <h4>SELECCIONAR UNA UNIDAD...</h4>
         </div>
     </div>
     <div style="text-align: center" class="panel-body">
         @foreach ($semestre as $sem)
         <a style="margin: 3px;" class="btn btn-primary"
-            href="{{ route('notasEstudiante.verNotasPorSemestre', [$sem->id_semestre,$anio]) }}">SEMESTRE
+            href="{{ route('notasEstudiante.verNotasPorSemestre', [$sem->id_semestre,$anio]) }}">UNIDAD
             {{ $sem->semestre . ' ' . $sem->año }}</a>
         @endforeach
         <a class="btn btn-success" href="{{ route('notasEstudiante.verNotasFinales',[$anio]) }}">PROMEDIO
@@ -36,6 +36,9 @@
                     NOTA 3
                 </th>
                 <th>
+                    NOTA 4
+                </th>
+                <th>
                     PROMEDIO
                 </th>
             </tr>
@@ -47,6 +50,7 @@
                 <td>{{ $i->nota1 }}</td>
                 <td>{{ $i->nota2 }}</td>
                 <td>{{ $i->nota3 }}</td>
+                <td>{{ $i->nota4 }}</td>
                 <td style="font-size: 16px;color: black;font-weight: bold"><span>{{ $i->promedio }}</span></td>
             </tr>
             @endforeach

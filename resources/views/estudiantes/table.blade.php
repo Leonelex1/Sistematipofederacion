@@ -56,7 +56,7 @@
                             ID
                         </th>
                         <th>
-                            Dni
+                            Clave
                         </th>
                         <th>
                             Nombre
@@ -77,7 +77,7 @@
                             Grado
                         </th>
                         {{-- <th>
-                            Semestre
+                            Unidad
                         </th> --}}
                         {{-- <th>
                             Foto

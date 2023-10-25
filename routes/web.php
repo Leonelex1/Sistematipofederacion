@@ -186,7 +186,7 @@ Route::get('cambiar-{id}-estado', [EstadoController::class, 'estado'])->name('es
 Route::get('notas-ver', [NotaController::class, 'index'])->name('notas.index')->middleware('verified');
 Route::get('notas-verNotas-{id}-{grado}-{anio}', [NotaController::class, 'verNotas'])->name('notas.verNotas')->middleware('verified');
 Route::get('notas-verNotas-{anio}', [NotaController::class, 'eliminarNotas'])->name('notas.eliminarNotas')->middleware('verified');
-//NOTAS POR SEMESTRES
+//NOTAS POR UNIDAD
 Route::get('notas-semestre-verNotas-{id}-{grado}-{semestre}-{anio}', [NotaController::class, 'verNotasSemestre'])->name('notas.verNotasSemestre')->middleware('verified');
 //NOTAS FINALES
 Route::get('notas-finales-{id}-{grado}-{anio}', [NotaController::class, 'verNotasFinales'])->name('notas.verNotasFinales')->middleware('verified');
@@ -196,9 +196,9 @@ Route::get('notas-finales-{id}-{grado}-{anio}', [NotaController::class, 'verNota
 Route::get('notas-docente-ver', [NotaDocenteController::class, 'index'])->name('notasDocente.index')->middleware('verified');
 Route::get('notas-docente-verNotas-{id_curso}-{id_grado}-{anio}', [NotaDocenteController::class, 'verNotas'])->name('notasDocente.verNotas')->middleware('verified');
 
-Route::get('notas-docente-actualizar/{id}/{nota1}/{nota2}/{nota3}/{sem}/{anio}', [NotaDocenteController::class, 'actualizar'])->name('notasDocente.actualizar')->middleware('verified');;
-Route::get('notas-docente-actualizar2/{id}/{nota1}/{nota2}/{nota3}/{curso}/{semestre}/{anio}', [NotaDocenteController::class, 'actualizar2'])->name('notasDocente.actualizar2')->middleware('verified');;
-//NOTAS POR SEMESTRES
+Route::get('notas-docente-actualizar/{id}/{nota1}/{nota2}/{nota3}/{nota4}/{sem}/{anio}', [NotaDocenteController::class, 'actualizar'])->name('notasDocente.actualizar')->middleware('verified');;
+Route::get('notas-docente-actualizar2/{id}/{nota1}/{nota2}/{nota3}/{nota4}/{curso}/{semestre}/{anio}', [NotaDocenteController::class, 'actualizar2'])->name('notasDocente.actualizar2')->middleware('verified');;
+//NOTAS POR UNIDAD
 Route::get('verNotas-por-semestre-docente-{id_curso}-{id_grado}-{semestre}-{anio}', [NotaDocenteController::class, 'verNotasPorSemestre'])->name('notasDocente.verNotasPorSemestre')->middleware('verified');
 //NOTAS FINALES
 Route::get('verNotas-finales-docente-{id_curso}-{id_grado}-{anio}', [NotaDocenteController::class, 'verNotasFinales'])->name('notasDocente.verNotasFinales')->middleware('verified');
@@ -209,7 +209,7 @@ Route::get('verNotas-finales-docente-{id_curso}-{id_grado}-{anio}', [NotaDocente
 Route::get('notas-estudiante-ver-{anio}', [NotaEstudianteController::class, 'index'])->name('notasEstudiante.index')->middleware('verified');
 Route::get('notas-estudiante-ingresar-anio', [NotaEstudianteController::class, 'ingresarAnio'])->name('notasEstudiante.ingresarAnio')->middleware('verified');
 //Route::get('notas-estudiante-verNotas-{id_curso}-{id_grado}', [NotaDocenteController::class, 'verNotas'])->name('notasEstudiante.verNotas')->middleware('verified');
-//NOTAS POR SEMESTRES
+//NOTAS POR UNIDAD
 Route::get('notas-estudiante-semestre-{semestre}-{anio}', [NotaEstudianteController::class, 'verNotasPorSemestre'])->name('notasEstudiante.verNotasPorSemestre')->middleware('verified');
 //NOTAS FINALES
 Route::get('notas-estudiante-final-{anio}', [NotaEstudianteController::class, 'verNotasFinales'])->name('notasEstudiante.verNotasFinales')->middleware('verified');

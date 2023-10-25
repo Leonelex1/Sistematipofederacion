@@ -52,7 +52,7 @@
                         @error('dni')
                             <small>*{{ $message }}</small>
                         @enderror
-                        <input type="number" placeholder="Dni *" name="dni" id="dni" value="{{ old('dni') }}">
+                        <input type="number" placeholder="Clave *" name="dni" id="dni" value="{{ old('dni') }}">
                     </div>
                     <div class="col-xs-12 col-md-6">
                         @error('nombre')
@@ -112,23 +112,7 @@
         </div>
         <script>
             var boton = document.getElementById("boton");
-            $("#dni").change(function() {
-                var dni = document.getElementById("dni").value;
-                fetch('https://dni.optimizeperu.com/api/persons/' + dni).then(res => res.json()).then(data => {
-                    document.getElementById("nombre").value = (data.name);
-                    document.getElementById("apellido").value = (data.first_name + " " + data.last_name);
-                });
-            })
-
-            //OJO ESTE CODIGO E EJECUTA SI LA PAGINA NO ES HTTPS
-            // $("#dni").change(function() {
-            //     var dni = document.getElementById("dni").value;
-            //     fetch('http://zekasystem.xyz/api/dni2?dni=' + dni).then(res => res.json()).then(data => {
-            //         document.getElementById("nombre").value = (data.nombres);
-            //         document.getElementById("apellido").value = (data.apellido_paterno + " " + data
-            //             .apellido_materno);
-            //     });
-            // })
+            
 
         </script>
 

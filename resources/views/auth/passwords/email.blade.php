@@ -45,18 +45,18 @@
             <p class="login-box-msg">Ingrese su correo con el que se ha registrado</p>
 
             @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
             @endif
 
             @if (session('error-correo'))
-                <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
-                    <small>{{ session('error-correo') }}</small>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+            <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+                <small>{{ session('error-correo') }}</small>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             @endif
             <form method="post" action="{{ route('mail.index') }}">
                 @csrf
@@ -66,18 +66,16 @@
                         placeholder="Correo">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                     @endif
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-danger">
-                            <i class="fas fa-arrow-left"></i>
-                            <a style="color: white" href="{{ url('/home') }}">Salir</a>
-                        </button>
+                        <a class="btn btn-danger" style="color: white" href="{{ url('/home') }}"><i
+                                class="fas fa-arrow-left"></i> Salir</a>
                         <button type="submit" class="btn btn-info pull-right">
                             <i class="fa fa-btn fa-envelope"></i> Enviar link
                         </button>

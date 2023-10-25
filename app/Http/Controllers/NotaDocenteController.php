@@ -63,7 +63,7 @@ class NotaDocenteController extends Controller
         usuario
         where tipo=3 and grado=?', [$id_grado]);
 
-        //CONSULTA DE SEMESTRES
+        //CONSULTA DE UNIDADES
         $semestre = DB::select('select * from semestre where año=?', [$anio]);
 
         return view('notas_docente/table')
@@ -77,18 +77,20 @@ class NotaDocenteController extends Controller
             ->with('anio', $anio);;
     }
 
-    public function actualizar($id, $nota1, $nota2, $nota3, $sem, $anio)
+    public function actualizar($id, $nota1, $nota2, $nota3, $nota4, $sem, $anio)
     {
         $nota1 = intval($nota1);
         $nota2 = intval($nota2);
         $nota3 = intval($nota3);
-        $pro = round(($nota1 + $nota2 + $nota3) / 3);
+        $nota4 = intval($nota4);
+        $pro = round(($nota1 + $nota2 + $nota3 + $nota4) / 4);
 
-        $sql = DB::update('update nota set semestre=?, nota1=?, nota2=?, nota3=?, promedio=?, anio=? where id_nota=?', [
+        $sql = DB::update('update nota set semestre=?, nota1=?, nota2=?, nota3=?, nota4=?, promedio=?, anio=? where id_nota=?', [
             $sem,
             $nota1,
             $nota2,
             $nota3,
+            $nota4,
             $pro,
             $anio,
             $id
@@ -105,6 +107,7 @@ class NotaDocenteController extends Controller
         nota.nota1,
         nota.nota2,	
         nota.nota3,
+        nota.nota4,
         nota.promedio
         FROM
         usuario
@@ -116,12 +119,13 @@ class NotaDocenteController extends Controller
         return response()->json(['dato' => $pro_final, 200]);
     }
 
-    public function actualizar2($id, $nota1, $nota2, $nota3, $curso, $semestre, $anio)
+    public function actualizar2($id, $nota1, $nota2, $nota3, $nota4, $curso, $semestre, $anio)
     {
         $nota1 = intval($nota1);
         $nota2 = intval($nota2);
         $nota3 = intval($nota3);
-        $pro = round(($nota1 + $nota2 + $nota3) / 3);
+        $nota4 = intval($nota4);
+        $pro = round(($nota1 + $nota2 + $nota3 + $nota4) / 4);
 
         $sql3 = DB::select('SELECT
         usuario.id,
@@ -132,6 +136,7 @@ class NotaDocenteController extends Controller
         nota.nota1,
         nota.nota2,	
         nota.nota3,
+        nota.nota4,
 		nota.curso,
         nota.semestre,
         nota.promedio
@@ -141,22 +146,24 @@ class NotaDocenteController extends Controller
         where estudiante=? and curso=? and semestre=?', [$id, $curso, $semestre]);
 
         if ($sql3 == null) {
-            $sql = DB::update('insert into nota(estudiante,curso,semestre,nota1,nota2,nota3,promedio,anio)values(?,?,?,?,?,?,?,?)', [
+            $sql = DB::update('insert into nota(estudiante,curso,semestre,nota1,nota2,nota3,nota4,promedio,anio)values(?,?,?,?,?,?,?,?,?)', [
                 $id,
                 $curso,
                 $semestre,
                 $nota1,
                 $nota2,
                 $nota3,
+                $nota4,
                 $pro,
                 $anio,
 
             ]);
         } else {
-            $sql = DB::update('update nota set nota1=?, nota2=?, nota3=?, promedio=?, anio=? where estudiante=? and curso=? and semestre=? and anio=?', [
+            $sql = DB::update('update nota set nota1=?, nota2=?, nota3=?, nota4=?, promedio=?, anio=? where estudiante=? and curso=? and semestre=? and anio=?', [
                 $nota1,
                 $nota2,
                 $nota3,
+                $nota4,
                 $pro,
                 $anio,
                 $id,
@@ -178,6 +185,7 @@ class NotaDocenteController extends Controller
         nota.nota1,
         nota.nota2,	
         nota.nota3,
+        nota.nota4,
 				nota.curso,
         nota.promedio
         FROM
@@ -217,6 +225,7 @@ class NotaDocenteController extends Controller
         nota.nota1,
         nota.nota2,	
         nota.nota3,
+        nota.nota4,
         nota.promedio
         FROM
         usuario
@@ -265,7 +274,7 @@ class NotaDocenteController extends Controller
         usuario
         where tipo=3 and grado=? and id not in (' . implode(',', array_map('intval', $array)) . ')', [$id_grado]);
 
-        //CONSULTA DE SEMESTRES
+        //CONSULTA DE UNIDADES
         $semestre = DB::select('select * from semestre where año=?', [$anio]);
 
         $nom_semestre = DB::select('select * from semestre where id_semestre=?', [$id_semestre]);
@@ -281,7 +290,7 @@ class NotaDocenteController extends Controller
             ->with('id_semestre', $id_semestre)
             ->with('anio', $anio);
 
-        // return $consulta;SELECCIONAR UN SEMESTRE...
+        // return $consulta;SELECCIONAR UNA UNIDAD...
     }
 
     public function verNotasFinales($id_curso, $id_grado, $anio)
@@ -296,7 +305,7 @@ class NotaDocenteController extends Controller
         nota.anio,
         sum(promedio) as 'suma',
         -- CAST(sum(promedio)/3 as INT) as 'pro_total'
-        ROUND(sum(promedio)/3) as 'pro_total'
+        ROUND(sum(promedio)/4) as 'pro_total'
         FROM
         usuario
         LEFT JOIN nota ON nota.estudiante = usuario.id

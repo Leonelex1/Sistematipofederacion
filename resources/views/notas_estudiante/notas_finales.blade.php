@@ -24,7 +24,7 @@
                             CURSO
                         </th>
                         <th>
-                            DNI
+                            CLAVE
                         </th>
                         <th>
                             ALUMNO
